@@ -44,18 +44,14 @@ def integrandF1(o,ep_1,ep_2):
                                      (math.exp(ep_2*(o-z))-math.exp(ep_1*(o-z)))/(ep_1-ep_2) +
                                      math.exp(ep_1*(o-z))/(ep_1+ep_2))
         
-    #F1 = lambda z:(ep_1*ep_2/4.0) * (math.exp(ep_2*(o-z))) * ((math.exp(ep_2)+math.exp(ep_1))/(ep_2+ep_1)  +
-     #                                                         (math.exp(ep_2)-math.exp(ep_1))/(ep_2-ep_1)) 
     return F1
 def integrandF2(o,ep_1,ep_2):
-    #F2 = lambda z:(ep_1*ep_2/4.0) * (math.exp(ep_2*(z-o))) * ((math.exp(ep_2)+math.exp(ep_1))/(ep_2+ep_1)  +
-     #                                                         (math.exp(ep_2)-math.exp(ep_1))/(ep_2-ep_1))
     
     F2 = lambda z:(ep_1*ep_2/4.0) * (math.exp(ep_2*(z-o))/(ep_1+ep_2) +
                                      (math.exp(ep_2*(z-o))-math.exp(ep_1*(z-o)))/(ep_1-ep_2)*1.0 +
                                      math.exp(ep_1*(z-o))/(ep_1+ep_2))
     return F2
-def probx_gt_t(o,t,ep_1,ep_2):   # o is observered noisy count with ep_1, calculates prob that observed noisy count with ep_2 will be > t
+def probx_gt_t(o,t,ep_1,ep_2):   # o is observered noisy count with ep_1, calculates prob that observed noisy count with ep_2 noise will be > t
     F1=integrandF1(o,ep_1,ep_2)
     F2=integrandF2(o,ep_1,ep_2)
     if(t>=o):
